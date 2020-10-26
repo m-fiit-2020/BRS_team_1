@@ -2,6 +2,7 @@ import sqlalchemy
 from CrossSection import CrossSection
 from EducationYear import EducationYear
 from Group import Group
+from Subject import Subject
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -10,6 +11,7 @@ if __name__ == '__main__':
     print(education_year.end_year, education_year.begin_year)
     group = Group(name='FIIT-20', year=2020)
     print(group.name, group.year)
-
+    subject = Subject(code='al', name='algebra')
+    print(subject.code, subject.name)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
