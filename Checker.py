@@ -8,7 +8,7 @@ class Checker:
         self.phone = phone
 
     def check_email(self):
-        """Проверяет надпись электронной почты. Пока что знает только 'gmail.com' и 'mail.ru'"""
+        """Проверяет надпись электронной почты."""
         if re.match(r'(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)', self.email):
             print("email написан правильно")
             return True
