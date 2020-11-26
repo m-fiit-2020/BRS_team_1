@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import patch
 
 from main import print_main_menu, print_student_menu, \
-    print_group_menu, print_subject_menu, print_brs_menu
+    print_group_menu, print_subject_menu, print_brs_menu, start
 
 
 class MainTest(unittest.TestCase):
@@ -29,6 +29,7 @@ class MainTest(unittest.TestCase):
 1 - добавить БРС
 2 - редактировать БРС
 3 - удалить БРС"""
+        self.user_menu_input1 = ['0']
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_main_menu(self, mock_obj):
@@ -59,6 +60,13 @@ class MainTest(unittest.TestCase):
         print_brs_menu()
         result = mock_obj.getvalue().strip()
         self.assertEqual(self.brs_menu_expected, result)
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_start_function(self, mock_obj):
+        with patch('builtins.input', side_effect=self.user_menu_input1) as mock_input:
+            start()
+        result = mock_obj.getvalue().strip()
+        self.assertEqual(self.main_menu_expected, result)
 
 
 if __name__ == '__main__':

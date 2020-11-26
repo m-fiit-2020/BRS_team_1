@@ -97,26 +97,17 @@ def start():
     try:
         print_main_menu()
         step_one = int(input('Выберите действие: '))
+        if step_one == 0:
+            return
         main_menu_functions[step_one]()
-        if step_one == 1:
-            student_menu_functions[int(input('Выберите действие: '))]()
-            start()
-        elif step_one == 2:
-            group_menu_functions[int(input('Выберите действие: '))]()
-            start()
-        elif step_one == 3:
-            subject_menu_functions[int(input('Выберите действие: '))]()
-            start()
-        elif step_one == 4:
-            brs_menu_functions[int(input('Выберите действие: '))]()
-            start()
+        all_menus[step_one][int(input('Выберите действие: '))]()
+        start()
     except KeyError:
         print('Неверное значение')
         start()
 
 
-main_menu_functions = {0: exit,
-                       1: print_student_menu,
+main_menu_functions = {1: print_student_menu,
                        2: print_group_menu,
                        3: print_subject_menu,
                        4: print_brs_menu}
@@ -144,6 +135,12 @@ brs_menu_functions = {0: start,
                       1: add_brs_point,
                       2: edit_brs_point,
                       3: delete_brs_point}
+
+
+all_menus = {1: student_menu_functions,
+             2: group_menu_functions,
+             3: subject_menu_functions,
+             4: brs_menu_functions}
 
 if __name__ == '__main__':
     start()
