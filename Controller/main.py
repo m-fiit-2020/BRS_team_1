@@ -1,6 +1,7 @@
 from Controller.Factory import create_group, create_student, create_subject
 from Store.Collections import groups, subjects, students
 from Store.Moks import add_groups, add_students, add_subjects
+import UserInput
 
 
 def print_menu():
@@ -108,18 +109,7 @@ if __name__ == '__main__':
     add_groups()
     add_subjects()
     add_students()
+    create_group(UserInput.input_group())
     working = True
     while working:
         working = print_menu()
-
-    # Example Create
-    # group = Group(name="M-FIIT_20", year=20)
-    # subject = Subject(code="111", name="Math")
-    # section = CrossSection.FirstSection
-    # year = EducationYear(begin_year="2020", end_year="2022")
-    # points = BRSPoints(subject=subject, year=year, cross_section=section, points=120)
-    # student = Student(code="1229", fio="Saryal Vasiliev Inn", birthdate="02.10.2102", email="ssss",
-    #                   phone="dsasad", group=group, brs_points=[points, points])
-    # print(check_points(student))
-    # add_groups()
-    # create_student()
