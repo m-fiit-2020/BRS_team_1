@@ -1,3 +1,5 @@
+import re
+
 class Checker:
     """Атрибуты класса: электронная почта, номер телефона."""
     def __init__(self, email: str, phone: str):
@@ -6,20 +8,21 @@ class Checker:
 
     def check_email(self):
         """Проверяет надпись электронной почты. Пока что знает только 'gmail.com' и 'mail.ru'"""
-        if self.email[-10:] == "@gmail.com" or self.email[-8:] == "@mail.ru":
-            print("email написан правильно")
+        if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-z.]{2,6}$)", str(self.email)):
+            print("правильный email")
             return True
         else:
-            print("непрвильно ввели адрес email")
+            print("непрвильный email")
             return False
+
 
     def check_phone(self):
         """Проверяет надпись номера телефона"""
-        if (self.phone[0:2] == "89" and len(self.phone) == 11) or (self.phone[0:3] == "+79" and len(self.phone) == 12):
-            print("номер телефона написали правильно")
+        if re.match(r"(^(\+7)|8)\d{10}$", str(self.phone)):
+            print("правильный номер")
             return True
         else:
-            print("непрвильно ввели номер телефона")
+            print("неправильный номер")
             return False
 
-
+    def check_points(self):
