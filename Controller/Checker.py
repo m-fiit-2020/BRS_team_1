@@ -19,9 +19,9 @@ def check_points(student: Student):
     return False
 
 
-def check_email(self):
+def check_email(email: str):
     """Проверяет надпись электронной почты. Пока что знает только 'gmail.com' и 'mail.ru'"""
-    if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-z.]{2,6}$)", str(self.email)):
+    if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-z.]{2,6}$)", str(email)):
         print("правильный email")
         return True
     else:
@@ -29,9 +29,9 @@ def check_email(self):
         return False
 
 
-def check_phone(self):
+def check_phone(phone: str):
     """Проверяет надпись номера телефона"""
-    if re.match(r"(^(\+7)|8)\d{10}$", str(self.phone)):
+    if re.match(r"(^(\+7)|8)\d{10}$", str(phone)):
         print("правильный номер")
         return True
     else:
