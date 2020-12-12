@@ -2,7 +2,8 @@ from Models.Student import Student
 from Models.Group import Group
 from Store.Collections import groups
 from Models.Subject import Subject
-from Controller.Support.CheckInput import convert_input_to_int, check_input_on_empty
+from Controller.Support.CheckInput import check_input_on_empty
+from Controller.Support.Convert import convert_input_to_int
 from View import UserInput
 
 
