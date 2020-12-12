@@ -1,6 +1,6 @@
 import unittest
 from Models.Group import Group
-from Factory import create_group
+from Controller.Factory import create_group
 
 
 class FactoryGroupTest(unittest.TestCase):

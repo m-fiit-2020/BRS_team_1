@@ -1,9 +1,9 @@
 from Models.Student import Student
 from Models.Group import Group
-from Store.Collections import groups, subjects, students
+from Store.Collections import groups
 from Models.Subject import Subject
-from Support.CheckInput import convert_input_to_int, check_input_on_empty
-import UserInput
+from Controller.Support.CheckInput import convert_input_to_int, check_input_on_empty
+from View import UserInput
 
 
 def create_group(name, year):

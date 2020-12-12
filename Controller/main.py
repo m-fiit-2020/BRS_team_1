@@ -1,7 +1,7 @@
 from Controller.Factory import create_group, create_student, create_subject
 from Store.Collections import groups, subjects, students
 from Store.Moks import add_groups, add_students, add_subjects
-import UserInput
+from View import UserInput
 
 
 def print_menu():
