@@ -21,10 +21,6 @@ def create_subject(code, name):
     return Subject(code=code, name=name)
 
 
-def create_student(code, name, birthdate, email, phone):
-    group_cmd = UserInput.input_choose_group()
-    check_input_on_empty(group_cmd)
-    group_cmd = convert_input_to_int(group_cmd)
-    group = groups[group_cmd]
+def create_student(code, name, birthdate, email, phone, group):
     return Student(code=code, fio=name, birthdate=birthdate, email=email, phone=phone, group=group,
                    brs_points=[])
