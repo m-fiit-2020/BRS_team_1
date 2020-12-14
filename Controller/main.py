@@ -4,104 +4,142 @@ from Store.Moks import add_groups, add_students, add_subjects
 from View import UserInput
 
 
-def print_menu():
-    print("0 - выход")
-    print("1 - студент")
-    print("2 - группа")
-    print("3 - предмет")
-    step_one = int(input("Выберите действие: "))
-    if step_one == 0:
-        return False
-    elif step_one == 1:
-        print("1 - Добавить студента")
-        print("2 - Просмотр студентов")
-        step_two = int(input("Выберите действие: "))
-        if step_two == 1:
-            create_student()
-        else:
-            for student in students:
-                print(f"{student.code}\n"
-                      f"{student.fio}\n"
-                      f"{student.phone}\n"
-                      f"{student.email}\n"
-                      f"{student.birthdate}\n"
-                      f"{student.group.name} {student.group.year}\n")
-    elif step_one == 2:
-        print("1 - Добавить группу")
-        print("2 - Просмотр групп")
-        step_two = int(input("Выберите действие: "))
-        if step_two == 1:
-            create_group()
-        else:
-            for group in groups:
-                print(f"{group.name} {group.year}\n")
-    elif step_one == 3:
-        print("1 - Добавить предмет")
-        print("2 - Просмотр предмета")
-        step_two = int(input("Выберите действие: "))
-        if step_two == 1:
-            create_subject()
-        else:
-            for subject in subjects:
-                print(f"{subject.code} - {subject.name}\n")
+def print_main_menu():
+    print("""
+0 - выход
+1 - студент
+2 - группа
+3 - предмет
+4 - БРС""")
+
+
+def print_student_menu():
+    print("""
+0 - назад
+1 - добавить студента
+2 - редактировать студента
+3 - удалить студента""")
+
+
+def print_group_menu():
+    print("""
+0 - назад
+1 - добавить группу
+2 - редактировать группу
+3 - удалить группу""")
+
+
+def print_subject_menu():
+    print("""
+0 - назад
+1 - добавить предмет
+2 - редактировать предмет
+3 - удалить предмет""")
+
+
+def print_brs_menu():
+    print("""
+0 - назад
+1 - добавить БРС
+2 - редактировать БРС
+3 - удалить БРС""")
+
+
+def add_group():
+    pass
+
+
+def edit_group():
+    pass
+
+
+def delete_group():
+    pass
+
+
+def add_student():
+    pass
+
+
+def edit_student():
+    pass
+
+
+def remove_student():
+    pass
+
+
+def add_subject():
+    pass
+
+
+def edit_subject():
+    pass
+
+
+def delete_subject():
+    pass
+
+
+def add_brs_point():
+    pass
+
+
+def edit_brs_point():
+    pass
+
+
+def delete_brs_point():
+    pass
+
+
+def start():
+    try:
+        print_main_menu()
+        step_one = int(input('Выберите действие: '))
+        if step_one == 0:
+            return False
+        main_menu_functions[step_one]()
+        all_menus[step_one][int(input('Выберите действие: '))]()
+    except KeyError:
+        print('Неверное значение')
     return True
 
 
-
-def print_group_menu(self):
-    pass
-
-
-def print_subject_menu(self):
-    pass
+main_menu_functions = {1: print_student_menu,
+                       2: print_group_menu,
+                       3: print_subject_menu,
+                       4: print_brs_menu}
 
 
-def add_group(self):
-    pass
+student_menu_functions = {0: start,
+                          1: add_student,
+                          2: edit_student,
+                          3: remove_student}
 
 
-def edit_group(self):
-    pass
+group_menu_functions = {0: start,
+                        1: add_group,
+                        2: edit_group,
+                        3: delete_group}
 
 
-def delete_group(self):
-    pass
+subject_menu_functions = {0: start,
+                          1: add_subject,
+                          2: edit_subject,
+                          3: delete_subject}
 
 
-def add_student(self):
-    pass
+brs_menu_functions = {0: start,
+                      1: add_brs_point,
+                      2: edit_brs_point,
+                      3: delete_brs_point}
 
 
-def edit_student(self):
-    pass
-
-
-def remove_student(self):
-    pass
-
-
-def add_subject(self):
-    pass
-
-
-def edit_subject(self):
-    pass
-
-
-def delete_subject(self):
-    pass
-
-
-def add_brs_point(self):
-    pass
-
-
-def edit_brs_point(self):
-    pass
-
-
-def delete_brs_point(self):
-    pass
+all_menus = {1: student_menu_functions,
+             2: group_menu_functions,
+             3: subject_menu_functions,
+             4: brs_menu_functions}
 
 
 # Press the green button in the gutter to run the script.
@@ -109,7 +147,8 @@ if __name__ == '__main__':
     add_groups()
     add_subjects()
     add_students()
-    create_group(UserInput.input_group())
+    a = UserInput.input_group()
+    create_group(a[0], a[1])
     working = True
     while working:
-        working = print_menu()
+        working = start()
