@@ -22,5 +22,14 @@ def create_subject(code, name):
 
 
 def create_student(code, name, birthdate, email, phone, group):
+    check_input_on_empty(code)
+    check_input_on_empty(name)
+    check_input_on_empty(birthdate)
+    check_input_on_empty(email)
+    check_input_on_empty(phone)
+    check_input_on_empty(group)
+    code = convert_input_to_int(code)
+    birthdate = convert_input_to_int(birthdate)
+    phone = convert_input_to_int(phone)
     return Student(code=code, fio=name, birthdate=birthdate, email=email, phone=phone, group=group,
                    brs_points=[])
