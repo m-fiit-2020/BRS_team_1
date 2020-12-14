@@ -20,20 +20,20 @@ def check_points(student: Student):
 
 
 def check_email(email: str):
-    """Проверяет надпись электронной почты."""
-    if re.match(r'(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)', email):
-        print("email написан правильно")
+    """Проверяет надпись электронной почты. Пока что знает только 'gmail.com' и 'mail.ru'"""
+    if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-z.]{2,6}$)", str(email)):
+        print("правильный email")
         return True
     else:
-        print("непрвильно ввели адрес email")
+        print("непрвильный email")
         return False
 
 
 def check_phone(phone: str):
     """Проверяет надпись номера телефона"""
-    if (phone[0:2] == "89" and len(phone) == 11) or (phone[0:3] == "+79" and len(phone) == 12):
-        print("номер телефона написали правильно")
+    if re.match(r"(^(\+7)|8)\d{10}$", str(phone)):
+        print("правильный номер")
         return True
     else:
-        print("непрвильно ввели номер телефона")
+        print("неправильный номер")
         return False
