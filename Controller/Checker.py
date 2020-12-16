@@ -1,22 +1,7 @@
 import re
-from Models.Student import Student
-
-
-def check_points(student: Student):
-    is_true = True
-    for points in student.brs_points:
-        if points.points > 100:
-            print("Балл поставлен НЕКОРРЕКТНО:\n"
-                  f"Название предмета: {points.subject.name}\n"
-                  f"Код предмета: {points.subject.code}\n"
-                  f"Года обучения: c {points.year.begin_year} по {points.year.end_year}\n"
-                  f"Срез: {points.cross_section.value}\n"
-                  f"Количество баллов: {points.points}")
-            is_true = False
-    if is_true:
-        print("Баллы поставлены правильно")
-        return True
-    return False
+from Models.EducationYear import EducationYear
+from Models.CrossSection import CrossSection
+from Models.BRSPoints import BRSPoints
 
 
 def check_email(email: str):
@@ -37,3 +22,18 @@ def check_phone(phone: str):
     else:
         print("неправильный номер")
         return False
+
+
+def check_points(bp: BRSPoints, ey: EducationYear, cs: CrossSection):
+    if bp.year == ey and bp.cross_section == cs:
+        if bp.points > 100 or bp.points < 0 or type(bp.points) == float or type(bp.points) == bool:
+            print("Балл поставлен НЕКОРРЕКТНО\n"
+                  f"Название предмета: {bp.subject.name}\n"
+                  f"Код предмета: {bp.subject.code}\n"
+                  f"Года обучения: c {bp.year.begin_year} по {bp.year.end_year}\n"
+                  f"Срез: {bp.cross_section.value}\n"
+                  f"Количество баллов: {bp.points}")
+            return False
+        print("правильно", bp.points, bp.subject.name, bp.student.fio)
+        return True
+    print("Здесь пусто")
