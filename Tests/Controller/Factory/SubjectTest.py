@@ -1,8 +1,9 @@
 import unittest
 from Controller.Factory import create_subject
 
+
 class FactorySubjectTest(unittest.TestCase):
-    def test_create_subject_case_1 (self):
+    def test_create_subject_case_1(self):
         # given
         code = "Б1.О.01"
         name = "Методология научных исследований"

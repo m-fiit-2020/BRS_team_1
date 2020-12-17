@@ -2,47 +2,7 @@ from Controller.Factory import create_group, create_student, create_subject
 from Store.Collections import groups, subjects, students
 from Store.Moks import add_groups, add_students, add_subjects
 from View import UserInput
-
-
-def print_main_menu():
-    print("""
-0 - выход
-1 - студент
-2 - группа
-3 - предмет
-4 - БРС""")
-
-
-def print_student_menu():
-    print("""
-0 - назад
-1 - добавить студента
-2 - редактировать студента
-3 - удалить студента""")
-
-
-def print_group_menu():
-    print("""
-0 - назад
-1 - добавить группу
-2 - редактировать группу
-3 - удалить группу""")
-
-
-def print_subject_menu():
-    print("""
-0 - назад
-1 - добавить предмет
-2 - редактировать предмет
-3 - удалить предмет""")
-
-
-def print_brs_menu():
-    print("""
-0 - назад
-1 - добавить БРС
-2 - редактировать БРС
-3 - удалить БРС""")
+from View.Main import print_brs_menu, print_group_menu, print_subject_menu, print_student_menu, start
 
 
 def add_group():
@@ -91,19 +51,6 @@ def edit_brs_point():
 
 def delete_brs_point():
     pass
-
-
-def start():
-    try:
-        print_main_menu()
-        step_one = int(input('Выберите действие: '))
-        if step_one == 0:
-            return False
-        main_menu_functions[step_one]()
-        all_menus[step_one][int(input('Выберите действие: '))]()
-    except KeyError:
-        print('Неверное значение')
-    return True
 
 
 main_menu_functions = {1: print_student_menu,

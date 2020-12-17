@@ -7,6 +7,7 @@ from Models.CrossSection import CrossSection
 from Models.Group import Group
 from Models.Subject import Subject
 
+
 class TestChecker(unittest.TestCase):
     def test_check_email(self):
         list_emails = ("vladimirp1998@gmail.com", "eremenkoira19981998@gmail.com", "fhljkjhuh@gmail.com",
@@ -54,13 +55,10 @@ class TestChecker(unittest.TestCase):
         cross_section2 = CrossSection("Второй контрольный срез")
         cross_section3 = CrossSection("Заключительный контрольный срез")
 
-
-
         student1 = Student(code=123, fio="Егоров Алексей Васильевич", birthdate="01. 04. 1996",
                            email="eavamga@gmail.com", phone="+79244669579", group=group1)
         student2 = Student(code=124, fio="Иванов Иван Иванович", birthdate="30. 12. 2000", email="example@gmail.com",
                            phone="+79991112233", group=group2)
-
 
         EgorovAV_s1_y1_cs1 = BRSPoints(subject=subject1, year=year1, cross_section=cross_section1, points=99,
                                        student=student1)
@@ -72,8 +70,6 @@ class TestChecker(unittest.TestCase):
         IvamovII_s2_y2_cs1 = BRSPoints(subject=subject2, year=year2, cross_section=cross_section1, points=77,
                                        student=student2)
 
-
-
         EgorovAV_s3_y1_cs1 = BRSPoints(subject=subject3, year=year1, cross_section=cross_section1, points=102,
                                        student=student1)
         EgorovAV_s3_y1_cs2 = BRSPoints(subject=subject3, year=year1, cross_section=cross_section2, points=-12,
@@ -83,8 +79,6 @@ class TestChecker(unittest.TestCase):
                                        student=student2)
         IvamovII_s3_y1_cs2 = BRSPoints(subject=subject3, year=year1, cross_section=cross_section2, points=True,
                                        student=student2)
-
-
 
         self.assertEqual(Checker.check_points(EgorovAV_s1_y1_cs1, year1, cross_section1), True)
         self.assertEqual(Checker.check_points(EgorovAV_s2_y2_cs1, year2, cross_section1), True)
