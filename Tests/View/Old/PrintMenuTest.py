@@ -50,14 +50,14 @@ class PrintMenuTestCase(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_user_menu1(self, mock_obj):
-        with patch('builtins.input', side_effect=self.user_menu_input1) as mock_input:
+        with patch('builtins.input', side_effect=self.user_menu_input1):
             start()
         result = mock_obj.getvalue().strip()
         self.assertEqual(f'{self.main_menu_expected}\n{self.incorrect_value}', result)
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_user_menu2(self, mock_obj):
-        with patch('builtins.input', side_effect=self.user_menu_input2) as mock_input:
+        with patch('builtins.input', side_effect=self.user_menu_input2):
             start()
         result = mock_obj.getvalue().strip()
         self.assertEqual(f'{self.main_menu_expected}\n{self.student_menu_expected}\n{self.main_menu_expected}\n'
@@ -66,13 +66,9 @@ class PrintMenuTestCase(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_user_menu3(self, mock_obj):
-        with patch('builtins.input', side_effect=self.user_menu_input3) as mock_input:
+        with patch('builtins.input', side_effect=self.user_menu_input3):
             start()
         result = mock_obj.getvalue().strip()
         self.assertEqual(f'{self.main_menu_expected}\n{self.student_menu_expected}\n{self.main_menu_expected}\n'
                          f'{self.group_menu_expected}\n{self.main_menu_expected}\n{self.subject_menu_expected}\n'
                          f'{self.main_menu_expected}\n{self.brs_menu_expected}\n{self.incorrect_value}', result)
-
-
-if __name__ == '__main__':
-    unittest.main()

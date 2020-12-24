@@ -1,7 +1,7 @@
 import io
 import unittest
 from unittest.mock import patch
-from Tests.Mock.Controller.Main import delete_group_logic
+from Tests.Mock.View.Main import delete_group_logic
 
 
 class DeleteGroupTestCase(unittest.TestCase):
@@ -20,7 +20,7 @@ class DeleteGroupTestCase(unittest.TestCase):
     def test_case_0(self, mock_obj):
         # given setUp
         with patch('builtins.input', side_effect=self.cmd_input):
-            cmd_input = input()
+            # cmd_input = input()
             groups_count = len(self.groups)
             # when
             delete_group_logic(cmd_input, groups_count)

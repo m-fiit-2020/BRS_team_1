@@ -1,7 +1,7 @@
 from Tests.Mock.Controller.Support import convert_input_to_int
 
 
-def delete_group_logic(cmd_input: str, groups_count: int):
+def delete_group_logic(cmd_input: str, groups_count: int, groups):
     if cmd_input == "":
         raise Exception("Нет... вы ввели пустую строчку ( ´•︵•` )")
     cmd_input = convert_input_to_int(cmd_input)

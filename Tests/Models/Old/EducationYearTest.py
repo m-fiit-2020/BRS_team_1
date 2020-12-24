@@ -11,7 +11,3 @@ class EducationYearTestCase(unittest.TestCase):
         result = EducationYear(2020, 2022)
         self.assertEqual(result.begin_year, self.begin_education_year_expected)
         self.assertEqual(result.end_year, self.end_education_year_expected)
-
-
-if __name__ == '__main__':
-    unittest.main()

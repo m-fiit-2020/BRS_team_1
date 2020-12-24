@@ -9,6 +9,7 @@ class CreateGroupTestCase(unittest.TestCase):
         # then
         with self.assertRaises(Exception):
             # when
+            # TODO Добавить вызов функции
             raise Exception("Нет... вы ввели не целое число ( ´•︵•` )")
 
     def test_case_2(self):

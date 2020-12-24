@@ -7,6 +7,7 @@ class GroupTestCase(unittest.TestCase):
         # then
         with self.assertRaises(Exception):
             # when
+            # TODO Добавить вызов функции
             raise Exception()
 
     def test_case_2(self):
