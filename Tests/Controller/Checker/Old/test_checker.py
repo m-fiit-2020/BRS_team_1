@@ -40,6 +40,7 @@ class TestChecker(unittest.TestCase):
         for j in list_wrong_phones:
             self.assertEqual(Checker.check_phone(j), False)
 
+    @unittest.skip("Work in progress..")
     def test_check_points(self):
         group1 = Group("М-ФИИТ-20", 2020)
         group2 = Group("М-ФИИТ-19", 2019)
