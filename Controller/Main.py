@@ -3,7 +3,7 @@ from Store.Collections import groups, subjects, students
 from Store.Moks import add_groups, add_students, add_subjects
 from View import UserInput
 from View.Main import print_brs_menu, print_main_menu, print_group_menu, print_subject_menu, print_student_menu
-
+from View.UserInput import input_subject, input_subject_delete
 
 def add_group():
     pass
@@ -30,7 +30,14 @@ def remove_student():
 
 
 def add_subject():
-    pass
+        _code,_name = input_subject()
+        for i in subjects:
+            if i.code == _code:
+                print("Предмет с таким именем уже существует!")
+                break
+        else:
+            subjects.append(create_subject(_code,_name))
+            print("Предмет успешно добавлен")
 
 
 def edit_subject():
@@ -38,6 +45,15 @@ def edit_subject():
 
 
 def delete_subject():
+    _code = input_subject_delete()
+    for subj in subjects:
+        if subj.code == _code:
+            subjects.remove(subj)
+            print("Предмет с кодом "+_code+" удален")
+            break
+    else:
+            print("Предмет с таким кодом не существует")
+
     pass
 
 

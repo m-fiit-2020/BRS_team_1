@@ -15,9 +15,13 @@ def input_choose_group():
 
 
 def input_subject():
-    code = int(input("Введите код предмета: "))
+    code = input("Введите код предмета: ")
     name = input("Введите название предмета: ")
     return code, name
+
+def input_subject_delete():
+    code = input("Введите код предмета, который хотите удалить: ")
+    return code
 
 
 def input_student():

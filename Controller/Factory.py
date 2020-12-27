@@ -17,7 +17,6 @@ def create_group(name, year):
 def create_subject(code, name):
     check_input_on_empty(code)
     check_input_on_empty(name)
-    code = convert_input_to_int(code)
     return Subject(code=code, name=name)
 
 
