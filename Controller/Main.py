@@ -31,8 +31,8 @@ def remove_student():
 
 def add_subject():
         _code,_name = input_subject()
-        for i in subjects:
-            if i.code == _code:
+        for subj in subjects:
+            if subj.code == _code:
                 print("Предмет с таким именем уже существует!")
                 break
         else:
