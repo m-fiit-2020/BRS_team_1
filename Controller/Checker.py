@@ -24,16 +24,29 @@ def check_phone(phone: str):
         return False
 
 
-def check_points(bp: BRSPoints, ey: EducationYear, cs: CrossSection):
-    if bp.year == ey and bp.cross_section == cs:
-        if bp.points > 100 or bp.points < 0 or type(bp.points) == float or type(bp.points) == bool:
-            print("Балл поставлен НЕКОРРЕКТНО\n"
-                  f"Название предмета: {bp.subject.name}\n"
-                  f"Код предмета: {bp.subject.code}\n"
-                  f"Года обучения: c {bp.year.begin_year} по {bp.year.end_year}\n"
-                  f"Срез: {bp.cross_section.value}\n"
-                  f"Количество баллов: {bp.points}")
-            return False
-        print("правильно", bp.points, bp.subject.name, bp.student.fio)
-        return True
-    print("Здесь пусто")
+def check_points(bp: [BRSPoints], cs: CrossSection, point: int):
+    if point > 100:
+        print("Не правильно поставлен бал")
+        return False
+    if cs == CrossSection.FinalSection:
+        for i in bp:
+            if (i.cross_section == CrossSection.SecondSection or i.cross_section == CrossSection.FirstSection) \
+                    and i.points > point:
+                print("Бал контрольного среза не должен быть меньше предыдущего контрольного среза")
+                return False
+    if cs == CrossSection.SecondSection:
+        for i in bp:
+            if i.cross_section == CrossSection.FirstSection and i.points > point:
+                print("Бал контрольного среза не должен быть меньше предыдущего контрольного среза")
+                return False
+    print("Бал поставлен правильно")
+    return True
+
+
+
+
+
+# FirstSection = "Первый контрольный срез"
+# SecondSection = "Второй контрольный срез"
+# FinalSection = "Заключительный контрольный срез"
+
