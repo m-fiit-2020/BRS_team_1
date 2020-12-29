@@ -34,7 +34,7 @@ class AddSubjectTestCase(unittest.TestCase):
     def test_code_empty_3(self, mock_obj):
         #inputs
         inputs = ['', 'math']
-        with patch('builtins.input', side_effect=inputs) as mock_input:
+        with patch('builtins.input', side_effect=inputs):
             add_subject()
         result = mock_obj.getvalue().strip()
         self.assertEqual(self.code_empty,result)
@@ -43,7 +43,7 @@ class AddSubjectTestCase(unittest.TestCase):
     def test_name_empty_4(self, mock_obj):
         #inputs
         inputs = ['12','']
-        with patch('builtins.input', side_effect=inputs) as mock_input:
+        with patch('builtins.input', side_effect=inputs):
                     add_subject()
         result = mock_obj.getvalue().strip()
         self.assertEqual(self.name_empty,result)
@@ -52,9 +52,8 @@ class AddSubjectTestCase(unittest.TestCase):
     def test_code_repeat_5(self,mock_obj):
         # inputs
         inputs = ['123', 'physic']
-        #repeatingsubject
         subjects.append(create_subject('123','math'))
-        with patch('builtins.input', side_effect=inputs) as mock_input:
+        with patch('builtins.input', side_effect=inputs):
             add_subject()
         result = mock_obj.getvalue().strip()
         self.assertEqual(result,self.code_repeat)

@@ -54,7 +54,7 @@ def delete_subject():
     for subj in subjects:
         if subj.code == _code:
             subjects.remove(subj)
-            print("Предмет с кодом "+_code+" удален")
+            print("Предмет успешно удален")
             break
     else:
             print("Предмет с таким кодом не существует")
