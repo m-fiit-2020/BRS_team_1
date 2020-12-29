@@ -31,13 +31,18 @@ def remove_student():
 
 def add_subject():
         _code,_name = input_subject()
-        for subj in subjects:
-            if subj.code == _code:
-                print("Предмет с таким именем уже существует!")
-                break
+        if _code == '':
+            print('Код предмета не может быть пустым')
+        elif _name == '':
+            print('Название предмета не может быть пустым')
         else:
-            subjects.append(create_subject(_code,_name))
-            print("Предмет успешно добавлен")
+            for subj in subjects:
+                if subj.code == _code:
+                    print("Предмет с таким именем уже существует!")
+                    break
+            else:
+                subjects.append(create_subject(_code,_name))
+                print("Предмет успешно добавлен")
 
 
 def edit_subject():
